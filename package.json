@@ -1,0 +1,29 @@
+{
+  "name": "color_collection_back-end",
+  "version": "1.0.0",
+  "description": "## Requisitos Funcionais",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/server.ts",
+    "build": "tsup src",
+    "start": "node src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "20.11.4",
+    "@typescript-eslint/eslint-plugin": "6.19.0",
+    "@typescript-eslint/parser": "6.19.0",
+    "eslint": "8.56.0",
+    "prisma": "5.8.1",
+    "tsup": "8.0.1",
+    "tsx": "4.7.0",
+    "typescript": "5.3.3"
+  },
+  "dependencies": {
+    "dotenv": "16.3.1",
+    "fastify": "4.25.2",
+    "zod": "3.22.4"
+  }
+}
