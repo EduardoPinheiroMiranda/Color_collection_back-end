@@ -1,8 +1,8 @@
 import { FastifyRequest, FastifyReply } from "fastify"
 import { z } from "zod"
-import { RequestToDatabase } from "@/repository/prisma/requestToDatabase"
-import { CriarUsuario } from "@/services/CriarUsuario"
+
 import { EmailExistente } from "@/erros/emailExistente"
+import makeCriarUsuario from "@/factory/maxe-criarUsuario"
 
 export async function criarUsuario(request: FastifyRequest, reply: FastifyReply){
 	
@@ -17,8 +17,7 @@ export async function criarUsuario(request: FastifyRequest, reply: FastifyReply)
 
 	try{
 
-		const repository_prisma = new RequestToDatabase()
-		const service_CriarUsuario = new CriarUsuario(repository_prisma)
+		const service_CriarUsuario = makeCriarUsuario()
 
 		await service_CriarUsuario.execut({
 			name,

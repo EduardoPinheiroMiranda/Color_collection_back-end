@@ -21,8 +21,6 @@ export class CriarUsuario{
 
 		const usuarioExiste = await this.requisicaoAoBanco.findByEmail(email)
 
-		console.log(usuarioExiste)
-
 		if(usuarioExiste){
 			throw new EmailExistente()
 		}

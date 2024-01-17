@@ -2,7 +2,7 @@
 
 ## Requisitos Funcionais 
 
--[] Deve ser possivel que um usuário possa se cadastrar;
+-[x] Deve ser possivel que um usuário possa se cadastrar;
 -[] Deve ser posivel que o usuário se autentique antes de acessar a aplicação;
 -[] Deve ser possivel listar todas as paletas com base em sua categoria e filtro;
 -[] Deve ser possivel cadastrar palhetasdes de cores;
@@ -24,5 +24,5 @@
 
 ## Regras de Negicio
 
--[] O usuário não pode criar uma conta com um email já existente; 
+-[x] O usuário não pode criar uma conta com um email já existente; 
 -[] O usuário deve criar as palhetas com nomes unicos;
