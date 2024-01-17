@@ -1,3 +1,4 @@
+import { EmailExistente } from "@/erros/emailExistente"
 import { ModeloDeRequisicaoAoBanco } from "@/repository/interface"
 import Bcripyt from "bcryptjs"
 
@@ -20,8 +21,10 @@ export class CriarUsuario{
 
 		const usuarioExiste = await this.requisicaoAoBanco.findByEmail(email)
 
-		if(!usuarioExiste){
-			throw new Error("Este email já está em uso")
+		console.log(usuarioExiste)
+
+		if(usuarioExiste){
+			throw new EmailExistente()
 		}
 
 		const user = await this.requisicaoAoBanco.create({
