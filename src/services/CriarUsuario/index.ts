@@ -1,21 +1,21 @@
 import { EmailExistente } from "@/erros/emailExistente"
-import { ModeloDeRequisicaoAoBanco } from "@/repository/interface"
+import { ModeloDeRequisicoesParaUsuario } from "@/repository/interface"
 import Bcripyt from "bcryptjs"
 
-interface CadastroDeUsuario{
+interface ModeloDeUsuario{
     name: string
     email: string
     password: string
 }
 
 export class CriarUsuario{
-	constructor( private requisicaoAoBanco: ModeloDeRequisicaoAoBanco){}
+	constructor( private requisicaoAoBanco: ModeloDeRequisicoesParaUsuario){}
 
 	async execut({
 		name,
 		email,
 		password
-	}:CadastroDeUsuario){
+	}:ModeloDeUsuario){
         
 		const password_hash = await Bcripyt.hash(password, 6)
 

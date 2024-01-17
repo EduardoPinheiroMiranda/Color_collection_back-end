@@ -1,16 +1,16 @@
 import { describe, it, expect, beforeEach } from "vitest"
-import { BancoDeTeste } from "@/repository/local-de-teste/bancoDeTeste"
+import { UsuarioTeste } from "@/repository/local-de-teste/usuario"
 import { CriarUsuario } from "."
 import bcrypt from "bcryptjs"
 import { EmailExistente } from "@/erros/emailExistente"
 
-let repository_prisma: BancoDeTeste
+let repository_prisma: UsuarioTeste
 let service_criarUsuario: CriarUsuario
 
 describe("Criação de usuarios", () => {
 
 	beforeEach(() => {
-		repository_prisma = new BancoDeTeste()
+		repository_prisma = new UsuarioTeste()
 		service_criarUsuario = new CriarUsuario(repository_prisma)
 	})
 

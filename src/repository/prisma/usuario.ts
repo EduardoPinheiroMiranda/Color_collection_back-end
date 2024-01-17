@@ -1,8 +1,8 @@
 import { Prisma } from "@prisma/client"
-import { ModeloDeRequisicaoAoBanco } from "../interface"
+import { ModeloDeRequisicoesParaUsuario } from "../interface"
 import { prisma } from "@/lib/prisma"
 
-export class RequestToDatabase implements ModeloDeRequisicaoAoBanco{
+export class RequisicoesDoUsuario implements ModeloDeRequisicoesParaUsuario{
     
 	async create(data: Prisma.UserCreateInput){
         

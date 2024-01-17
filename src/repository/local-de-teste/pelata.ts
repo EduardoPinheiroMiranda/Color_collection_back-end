@@ -1,21 +1,17 @@
 import { Prisma, User } from "@prisma/client"
-import { ModeloDeRequisicaoAoBanco } from "../interface"
+import { ModeloDeRequisicoesParaPaleta } from "../interface"
 import { randomUUID } from "crypto"
 
 
-export class BancoDeTeste implements ModeloDeRequisicaoAoBanco{
+export class PaletaTeste implements ModeloDeRequisicoesParaPaleta{
 
 	public users: User[] = []
 
     
-	async create(data: Prisma.UserCreateInput){
+	async create(data: Prisma.PalletCreateInput){
 		
 		const newUser = {
-			id: randomUUID(),
-			name: data.name,
-			email: data.email,
-			password_hash: data.password_hash,
-			avatar: null,
+			
 		}
 
 		this.users.push(newUser)
