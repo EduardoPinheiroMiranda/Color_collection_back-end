@@ -53,6 +53,8 @@ export class CriarPaleta{
 			foreignKey_userId
 		})
 
-		return paleta
+		return {
+			paleta
+		}
 	}
 }

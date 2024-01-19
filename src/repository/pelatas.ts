@@ -5,4 +5,6 @@ export interface ModeloDeRequisicoesParaPaleta{
     create(data: Prisma.PalletUncheckedCreateInput): Promise<Pallet>
 
     findByName(name: string): Promise<Pallet | null>
+
+    getPallet(category: string): Promise< Pallet[] | null>
 }

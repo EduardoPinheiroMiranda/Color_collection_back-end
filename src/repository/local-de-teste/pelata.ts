@@ -34,5 +34,19 @@ export class PaletaTeste implements ModeloDeRequisicoesParaPaleta{
 
 		return user
 	}
+
+	async getPallet(category: string){
+
+		if(category === "all"){
+			const paletas = this.baseTest.filter((paleta) => paleta)
+
+			return paletas
+		}
+		
+
+		const paletas = this.baseTest.filter((paleta) => paleta.category === category)
+		return paletas
+
+	}
 	
 }

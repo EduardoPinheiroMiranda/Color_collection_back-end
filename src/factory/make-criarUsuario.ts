@@ -1,5 +1,5 @@
 import { RequisicoesDoUsuario } from "@/repository/prisma/usuario"
-import { CriarUsuario } from "@/services/CriarUsuario"
+import { CriarUsuario } from "@/services/criarUsuario"
 
 export function makeCriarUsuario(){
 

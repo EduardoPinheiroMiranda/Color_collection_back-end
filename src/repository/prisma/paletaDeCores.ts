@@ -24,5 +24,21 @@ export class RequisicoesDaPaleta implements ModeloDeRequisicoesParaPaleta{
 		return paleta
 	}
     
+
+	async getPallet(category: string){
+		
+		if(category === "all"){
+			const paletas = await prisma.pallet.findMany()
+			return paletas
+		}
+
+		const paletas = await prisma.pallet.findMany({
+			where:{
+				category: category
+			}
+		})
+		
+		return paletas
+	}
 	
 }
