@@ -1,5 +1,5 @@
 import { Prisma } from "@prisma/client"
-import { ModeloDeRequisicoesParaUsuario } from "../interface"
+import { ModeloDeRequisicoesParaUsuario } from "../usuario"
 import { prisma } from "@/lib/prisma"
 
 export class RequisicoesDoUsuario implements ModeloDeRequisicoesParaUsuario{

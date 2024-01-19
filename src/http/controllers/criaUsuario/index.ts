@@ -2,7 +2,7 @@ import { FastifyRequest, FastifyReply } from "fastify"
 import { z } from "zod"
 
 import { EmailExistente } from "@/erros/emailExistente"
-import makeCriarUsuario from "@/factory/maxe-criarUsuario"
+import { makeCriarUsuario } from "@/factory/make-criarUsuario"
 
 export async function criarUsuario(request: FastifyRequest, reply: FastifyReply){
 	

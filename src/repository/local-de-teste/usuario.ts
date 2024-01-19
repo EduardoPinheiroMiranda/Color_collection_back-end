@@ -1,16 +1,16 @@
 import { Prisma, User } from "@prisma/client"
-import { ModeloDeRequisicoesParaUsuario } from "../interface"
+import { ModeloDeRequisicoesParaUsuario } from "../usuario"
 import { randomUUID } from "crypto"
 
 
 export class UsuarioTeste implements ModeloDeRequisicoesParaUsuario{
 
-	public users: User[] = []
+	public baseTest: User[] = []
 
     
 	async create(data: Prisma.UserCreateInput){
 		
-		const newUser = {
+		const user = {
 			id: randomUUID(),
 			name: data.name,
 			email: data.email,
@@ -18,14 +18,14 @@ export class UsuarioTeste implements ModeloDeRequisicoesParaUsuario{
 			avatar: null,
 		}
 
-		this.users.push(newUser)
+		this.baseTest.push(user)
 
-		return newUser
+		return user
 	}
 
 	async findByEmail(email: string){
         
-		const user = this.users.find((user)=> email === user.email)
+		const user = this.baseTest.find((user)=> email === user.email)
 
 		if(!user){
 			return null

@@ -1,6 +1,6 @@
+import { CoresInvalidas } from "@/erros/coresInvalidas"
 import { PaletaExistente } from "@/erros/paletaExistente"
-import { ModeloDeRequisicoesParaPaleta } from "@/repository/interface"
-import { Prisma } from "@prisma/client"
+import { ModeloDeRequisicoesParaPaleta } from "@/repository/pelatas"
 
 
 interface ModeloDePaleta{
@@ -9,31 +9,50 @@ interface ModeloDePaleta{
     category: string
     favorite: string
     colors: string
-    foreigKey_user: string
+    foreignKey_userId: string
 }
 
 export class CriarPaleta{
 
 	constructor( private requisicaoAoBanco: ModeloDeRequisicoesParaPaleta){}
 
-	// async execut({
-	// 	name,
-	// 	category,
-	// 	favorite,
-	// 	colors,
-	// 	foreigKey_user
-	// }: ModeloDePaleta){
+	async execut({
+		foreignKey_userId,
+		name,
+		category,
+		favorite,
+		colors,
+	}: ModeloDePaleta){
 
-	// 	const paletaExiste = await this.requisicaoAoBanco.findByName(name)
+		//reprovando nomes duplicados
+		const paletaExiste = await this.requisicaoAoBanco.findByName(name)
 
-	// 	if(!paletaExiste){
-	// 		throw new PaletaExistente()
-	// 	}
+		if(paletaExiste){
+			throw new PaletaExistente()
+		}
 
-	// 	const peleta = await this.requisicaoAoBanco.create({
-			
-	// 	})
+		//verificando estrutura dos valores em cores
+		const coresValidas = colors.split("-")
 
-	// 	return paleta
-	// }
+		if(coresValidas.length > 5){
+			throw new CoresInvalidas()
+		}
+
+		coresValidas.forEach((color) => {
+			if(color.length != 3 && color.length != 6){
+				throw new CoresInvalidas()
+			}
+		})
+
+		
+		const paleta = await this.requisicaoAoBanco.create({
+			name,
+			category,
+			favorite,
+			colors,
+			foreignKey_userId
+		})
+
+		return paleta
+	}
 }

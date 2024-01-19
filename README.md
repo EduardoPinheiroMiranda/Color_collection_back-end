@@ -5,7 +5,7 @@
 -[x] Deve ser possivel que um usuário possa se cadastrar;
 -[] Deve ser posivel que o usuário se autentique antes de acessar a aplicação;
 -[] Deve ser possivel listar todas as paletas com base em sua categoria e filtro;
--[] Deve ser possivel cadastrar palhetasdes de cores;
+-[x] Deve ser possivel cadastrar palhetasdes de cores;
 -[] Deve ser possivel excluir uma palheta;
 -[] Deve ser possivel atualizar uma palheta;
 -[] Deve ser possivel que o usuário possa fazer buscas pelo nome da palhetas detro da aplicação;
