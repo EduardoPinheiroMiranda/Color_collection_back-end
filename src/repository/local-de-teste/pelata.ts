@@ -9,7 +9,7 @@ export class PaletaTeste implements ModeloDeRequisicoesParaPaleta{
 
     
 	async create(data: Prisma.PalletUncheckedCreateInput){
-		
+
 		const pallet = {
 			id: randomUUID(),
 			name: data.name,
@@ -39,8 +39,8 @@ export class PaletaTeste implements ModeloDeRequisicoesParaPaleta{
 
 		if(category === "all"){
 			const paletas = this.baseTest.filter((paleta) => paleta)
-
-			return paletas
+			
+			return paletas.length == 0 ? null : paletas
 		}
 		
 
