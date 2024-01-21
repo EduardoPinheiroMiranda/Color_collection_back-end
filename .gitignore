@@ -5,7 +5,8 @@ node_modules
 #Variaveis de ambiente
 .env
 
-
+#teste
+compase
 
 #Build
 dist

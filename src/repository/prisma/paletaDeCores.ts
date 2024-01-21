@@ -40,5 +40,16 @@ export class RequisicoesDaPaleta implements ModeloDeRequisicoesParaPaleta{
 		
 		return paletas
 	}
+
+	async getById(id: string){
+		
+		const paleta = await prisma.pallet.findUnique({
+			where:{
+				id
+			}
+		})
+
+		return paleta
+	}
 	
 }

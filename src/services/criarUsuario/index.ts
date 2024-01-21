@@ -1,5 +1,5 @@
 import { EmailExistente } from "@/erros/emailExistente"
-import { ModeloDeRequisicoesParaUsuario } from "@/repository/interface"
+import { ModeloDeRequisicoesParaUsuario } from "@/repository/usuario"
 import Bcripyt from "bcryptjs"
 
 interface ModeloDeUsuario{

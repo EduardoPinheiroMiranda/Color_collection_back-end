@@ -6,5 +6,7 @@ export interface ModeloDeRequisicoesParaPaleta{
 
     findByName(name: string): Promise<Pallet | null>
 
+    getById(id: string): Promise<Pallet | null>
+
     getPallet(category: string): Promise< Pallet[] | null>
 }
