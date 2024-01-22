@@ -17,7 +17,7 @@ describe("Buscar paletas de cores", () => {
 
 	it("as buscar por categorias estão gerando resultados", async () => {
 
-		repository_paletaTeste.baseTest.push(
+		repository_paletaTeste.paletas_baseTest.push(
 			{
 				id: randomUUID(),
 				name: "Color Collection3",
@@ -47,7 +47,7 @@ describe("Buscar paletas de cores", () => {
 
 	it("a busca pelo nome de uma paleta esta gerando resultado", async () => {
 
-		repository_paletaTeste.baseTest.push(
+		repository_paletaTeste.paletas_baseTest.push(
 			{
 				id: randomUUID(),
 				name: "Color Collection3",

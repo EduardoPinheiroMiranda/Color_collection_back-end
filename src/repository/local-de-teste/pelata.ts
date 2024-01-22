@@ -5,7 +5,7 @@ import { randomUUID } from "crypto"
 
 export class PaletaTeste implements ModeloDeRequisicoesParaPaleta{
 
-	public baseTest: Pallet[] = []
+	public paletas_baseTest: Pallet[] = []
 
     
 	async create(data: Prisma.PalletUncheckedCreateInput){
@@ -19,34 +19,73 @@ export class PaletaTeste implements ModeloDeRequisicoesParaPaleta{
 			foreignKey_userId: data.foreignKey_userId
 		}
 
-		this.baseTest.push(pallet)
+		this.paletas_baseTest.push(pallet)
 
 		return pallet
 	}
 
+	async update(id: string, data: Prisma.PalletCreateInput){
+
+		const paletaAtualizada = this.paletas_baseTest.map((paleta) => {
+
+			if(paleta.id === id){
+				paleta.name = data.name
+				paleta.category = data.category
+				paleta.colors = data.colors
+			}
+
+			
+			return paleta
+		})
+
+
+		const newDataBase = this.paletas_baseTest.filter((paleta) => paleta.id !== id)
+
+
+		newDataBase.push(paletaAtualizada[0])
+		newDataBase.forEach((paleta) => {
+			this.paletas_baseTest.push(paleta)
+		})
+		
+		return paletaAtualizada[0]
+		
+	}
+
 	async findByName(name: string){
         
-		const user = this.baseTest.find((paleta)=> name === paleta.name)
+		const paleta = this.paletas_baseTest.find((paleta)=> name === paleta.name)
 
-		if(!user){
+		if(!paleta){
 			return null
 		}
 
-		return user
+		return paleta
 	}
 
 	async getPallet(category: string){
 
 		if(category === "all"){
-			const paletas = this.baseTest.filter((paleta) => paleta)
+			const paletas = this.paletas_baseTest.filter((paleta) => paleta)
 			
 			return paletas.length == 0 ? null : paletas
 		}
 		
 
-		const paletas = this.baseTest.filter((paleta) => paleta.category === category)
+		const paletas = this.paletas_baseTest.filter((paleta) => paleta.category === category)
 		return paletas
 
 	}
+
+	async getById(id: string){
+		
+		const paleta = this.paletas_baseTest.find((paleta) => paleta.id === id)
+
+		if(!paleta){
+			return null
+		}
+
+		return paleta
+	}
+
 	
 }

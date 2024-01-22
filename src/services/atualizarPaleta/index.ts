@@ -1,4 +1,4 @@
-import { ErroDeValidacao } from "@/erros/erroDeValidacao"
+import { BuscaSemResultados } from "@/erros/buscaSemResultado"
 import { PaletaExistente } from "@/erros/paletaExistente"
 import { ModeloDeRequisicoesParaPaleta } from "@/repository/pelatas"
 
@@ -10,9 +10,9 @@ interface ModeloDeAtualizacao{
 }
 
 
-export class AtualizarUsuario{
-	constructor(private requisicaoAoBanco: ModeloDeRequisicoesParaPaleta){}
+export class AtualizarPaleta{
 
+	constructor(private requisicaoAoBanco: ModeloDeRequisicoesParaPaleta){}
 
 	async execut(
 		{
@@ -23,19 +23,29 @@ export class AtualizarUsuario{
             
 		}:ModeloDeAtualizacao
 	){
+		
 		const atualizarPaleta  = await this.requisicaoAoBanco.getById(id)
-
+		
 		if(!atualizarPaleta){
-			throw new ErroDeValidacao
+			throw new BuscaSemResultados		
 		}
+
 
 		const nomeExist = await this.requisicaoAoBanco.findByName(name)
 
-		if(nomeExist){
+		if(nomeExist && atualizarPaleta.name != nomeExist.name){
 			throw new PaletaExistente
 		}
 
-        
-        
+
+		const novaPaleta = await this.requisicaoAoBanco.update(id, {
+			name,
+			category,
+			colors,
+		})
+
+		return {
+			novaPaleta
+		}
 	}
 }

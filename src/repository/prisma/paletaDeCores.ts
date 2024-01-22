@@ -13,6 +13,18 @@ export class RequisicoesDaPaleta implements ModeloDeRequisicoesParaPaleta{
 		return paleta
 	}
 	
+	
+	async update(id: string, data: Prisma.PalletCreateInput){
+		
+		const paletaAtualizada = await prisma.pallet.update({
+			where: {
+				id
+			},
+			data
+		})
+
+		return paletaAtualizada
+	}
     
 	async findByName(name: string){
 		const paleta = await prisma.pallet.findUnique({
