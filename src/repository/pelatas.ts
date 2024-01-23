@@ -11,4 +11,6 @@ export interface ModeloDeRequisicoesParaPaleta{
     getById(id: string): Promise<Pallet | null>
 
     getPallet(category: string): Promise< Pallet[] | null>
+
+    delite(id: string): Promise< string >
 }

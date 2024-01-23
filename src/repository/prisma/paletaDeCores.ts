@@ -13,7 +13,6 @@ export class RequisicoesDaPaleta implements ModeloDeRequisicoesParaPaleta{
 		return paleta
 	}
 	
-	
 	async update(id: string, data: Prisma.PalletCreateInput){
 		
 		const paletaAtualizada = await prisma.pallet.update({
@@ -36,7 +35,6 @@ export class RequisicoesDaPaleta implements ModeloDeRequisicoesParaPaleta{
 		return paleta
 	}
     
-
 	async getPallet(category: string){
 		
 		if(category === "all"){
@@ -61,7 +59,22 @@ export class RequisicoesDaPaleta implements ModeloDeRequisicoesParaPaleta{
 			}
 		})
 
+		if(!paleta){
+			return null
+		}
+
 		return paleta
+	}
+
+	async delite(id: string){
+		
+		await prisma.pallet.delete({
+			where: {
+				id
+			}
+		})
+
+		return "Paleta deletada com sucesso"
 	}
 	
 }

@@ -34,13 +34,10 @@ export class PaletaTeste implements ModeloDeRequisicoesParaPaleta{
 				paleta.colors = data.colors
 			}
 
-			
 			return paleta
 		})
 
-
 		const newDataBase = this.paletas_baseTest.filter((paleta) => paleta.id !== id)
-
 
 		newDataBase.push(paletaAtualizada[0])
 		newDataBase.forEach((paleta) => {
@@ -87,5 +84,22 @@ export class PaletaTeste implements ModeloDeRequisicoesParaPaleta{
 		return paleta
 	}
 
+	async delite(id: string){
+		
+		const excluirPaleta = this.paletas_baseTest.filter((paleta) => {
+			
+			const newList = []
+
+			if(paleta.id !== id){
+				newList.push(paleta)
+			}
+			
+			return newList
+		})
+
+		this.paletas_baseTest = excluirPaleta
+
+		return "Paleta deletada com sucesso"
+	}
 	
 }
