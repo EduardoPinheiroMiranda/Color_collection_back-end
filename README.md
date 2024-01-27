@@ -9,7 +9,7 @@
 -[x] Deve ser possivel excluir uma palheta;
 -[x] Deve ser possivel atualizar uma palheta;
 -[x] Deve ser possivel que o usuário possa fazer buscas pelo nome da palhetas detro da aplicação;
--[] Deve ser possivel marcar e desmarcar uma palheta como favorita; 
+-[x] Deve ser possivel marcar e desmarcar uma palheta como favorita; 
 -[x] Deve ser possivel filtar as palhetas por suas categorias;
 -[] Deve ser possivel mostra as informações do usuario para o mesmo;
 
