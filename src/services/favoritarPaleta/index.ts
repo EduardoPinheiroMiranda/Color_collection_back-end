@@ -14,6 +14,10 @@ export class FavoritarPaleta{
         
 		const paleta = await this.requisicaoAoBanco.getById(id)
 
+		if(!paleta){
+                    throw new Error("paleta não encontrada")
+		}
+
 		return paleta
 	}
 }
